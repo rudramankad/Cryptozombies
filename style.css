@@ -1,0 +1,132 @@
+
+    body {
+        background: url('zombiebackground.png');
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: #fff;
+        font-size: 16px;
+    }
+
+
+.zombies-wrapper {
+    width: 800x;
+    height: 800px;
+    margin: 50px auto 50px auto;
+    background-image: url('bg.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+    background-size: 100%;
+}
+
+.button-wrapper {
+    width: 100%;
+    margin: -50px auto 0px auto;
+    text-align: center;
+   
+    
+}
+
+.showZombieButton, .showKittyButton, .createzombieButton, .levelupButton, .createkittyButton, .feedOnKitty, .attackZombie {
+    background-color: #170f5b;
+    padding: 15px 30px;
+    margin-right: 10px;
+    margin-top: 20px; /* Adjust this value to move the buttons down */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 24px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.zombie ul {
+    margin: 0px;
+    list-style: none;
+    margin-block-start: 0em !important;
+    margin-block-end: 0em !important;
+    height: 200px;
+    font-size: 18px !important;
+    color: #fff !important;
+}
+
+.zombie {
+    line-height: 2em !important;
+}
+
+#zombie-image {
+    margin-left: 135px;
+}
+
+#txStatus {
+    text-align: center;
+    color: #fff;
+    top: -30px;
+    position: relative;
+}
+
+#logo {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.site-wrapper {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+#header {
+    height: 100vh;
+}
+
+#team {
+    width: 700px;
+    margin: 0 auto 50px auto;
+    border: 1px solid #fff;
+    font-size: 18px;
+
+}
+
+#team a {
+    color: #fff;
+}
+
+#th {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+    color:#2a6e73;
+}
+
+td {
+    border: 1px solid #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+#scroll {
+    width:50px;
+    height: 50px;
+    margin: 0 auto;
+}
+
+#scroll img {
+    width: 50px;
+    margin-top: -30px;
+}
+
+
+
+.show_middle{
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+}

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Team ABDC | CPSC 559</title>
+<link rel="icon" href="favicon.ico">
+  <script language="javascript" type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+  <script language="javascript" type="text/javascript" src="cryptozombies_abi.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="actual_path_to/OBJLoader.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="site-wrapper">
+  <div id="header">
+    
+  
+  <table id="team">
+    <div id="th">Team ABCD</div>
+    <tr>
+      <td>Zhiyuan Yang</td>
+      <td>CWID: 885081174</td>
+      <td>Email: </br> <a href="mailto:TBA">Yang1018@csu.fullerton.edu </a></td>
+    </tr>
+    <tr>
+      <td>Ashil Shah</td>
+      <td>CWID: 885331850</td>
+      <td>Email: </br> <a href="mailto:ashil2495@csu.fullerton.edu">ashil2495@csu.fullerton.edu</a></td>
+    </tr>
+    <tr>
+      <td>Tejaskumar Pareshbhai Patel</td>
+      <td>CWID: 885174433</td>
+      <td>Email: </br> <a href="mailto:tejas.p@csu.fullerton.edu">tejas.p@csu.fullerton.edu</a></td>
+    </tr>
+    <tr>
+      <td>Rudra Mankad</td>
+      <td>CWID: 885195628</td>
+      <td>Email: </br> <a href="mailto:rudramankad@csu.fullerton.edu">rudramankad@csu.fullerton.edu</a></td>
+    </tr>
+  </table>
+  <div id="scroll"><a href="#demo"><img src="scroll.jpg"></a></div>
+  </div>
+  <div class="zombies-wrapper" id="demo">
+  <div id="txStatus"></div>
+  <div class="button-wrapper">
+  <button class="showZombieButton">Show Zombies</button>
+  <button class="createzombieButton">Create Zombie</button>
+  <button class="levelupButton">Level Up</button>
+  <button class="feedOnKitty">Feed On Kitty</button>
+  <button class="attackZombie">Attack Zombies</button>
+
+  <div id="zombies"></div>
+  <div id="feedCount"></div>
+
+  </div>
+ 
+  </div>
+
+  
+
+  <script>
+
+    var cryptoZombies;
+    var userAccount;
+    const showZombieButton = document.querySelector('.showZombieButton');
+    const showKittyButton = document.querySelector('.showKittyButton');
+    const createzombieButton = document.querySelector('.createzombieButton');
+    const createkittyButton = document.querySelector('.createkittyButton');
+    const levelupButton = document.querySelector('.levelupButton');
+    const feedOnKittyButton =document.querySelector('.feedOnkittyButton');
+    const attackZombieButton = document.querySelector('attackZombieButton');
+
+    // Get a reference to the "Show Zombies" button
+//var showZombieButton = document.querySelector('.showZombieButton');
+var lvl0 = 0
+var lvl1 = 0
+var lvl2 = 0
+// Add a click event listener to the button
+showZombieButton.addEventListener('click', function() {
+  
+  // Create a new image element
+  var img = document.createElement('img');
+  img.setAttribute('src','');
+  img.setAttribute('width', '150');
+  img.setAttribute('height', '150');
+   // Get a reference to the 'zombies' div
+   var zombiesDiv = document.getElementById('zombies');
+
+// Remove any existing children of the 'zombies' div
+  while (zombiesDiv.firstChild) {
+    zombiesDiv.removeChild(zombiesDiv.firstChild);
+  }
+ 
+ for (var i = 0; i < lvl0; i++) {
+    var img = document.createElement('img');
+    img.setAttribute('src','123.jpg');
+    img.setAttribute('width', '250');
+    img.setAttribute('height', '250');
+    zombiesDiv.appendChild(img);
+  }
+
+  for(var i=0;i<  lvl1;i++){
+    var img = document.createElement('img');
+    img.setAttribute('src','456.jpg');
+    img.setAttribute('width', '250');
+    img.setAttribute('height', '250');
+    zombiesDiv.appendChild(img);
+  
+  }
+
+  for(var i=0;i<  lvl2;i++){
+    var img = document.createElement('img');
+    img.setAttribute('src','789.jpg');
+    img.setAttribute('width', '250');
+    img.setAttribute('height', '250');
+    zombiesDiv.appendChild(img);
+  
+  }
+
+  // Append the new image element to the 'zombies' div
+  //
+});
+
+// Add a click event listener to the button
+createzombieButton.addEventListener('click', function() {
+  
+  // Create a new image element
+  var img = document.createElement('img');
+  img.setAttribute('src','123.jpg');
+  img.setAttribute('width', '50');
+  img.setAttribute('height', '50');
+  img.setAttribute('class','show_middle')
+ 
+  lvl0+=1
+
+  // Get a reference to the 'zombies' div
+  var zombiesDiv = document.getElementById('zombies');
+
+  // Remove any existing children of the 'zombies' div
+  while (zombiesDiv.firstChild) {
+    zombiesDiv.removeChild(zombiesDiv.firstChild);
+  }
+
+
+  // Append the new image element to the 'zombies' div
+  zombiesDiv.appendChild(img);
+});
+
+levelupButton.addEventListener('click', function() {
+  
+  // Create a new image element
+  var img = document.createElement('img');
+ 
+ 
+  if(lvl1>0){
+    img.setAttribute('src','789.jpg');
+    img.setAttribute('width', '50');
+    img.setAttribute('height', '50');
+    img.setAttribute('class','show_middle')
+    lvl2+=1
+    lvl1-=1
+  } else if (lvl0>0){
+    img.setAttribute('src','456.jpg');
+    img.setAttribute('width', '50');
+    img.setAttribute('height', '50');
+    img.setAttribute('class','show_middle')
+    lvl1+=1
+    lvl0-=1
+  }
+
+  
+  // Get a reference to the 'zombies' div
+  var zombiesDiv = document.getElementById('zombies');
+
+  // Remove any existing children of the 'zombies' div
+  while (zombiesDiv.firstChild) {
+    zombiesDiv.removeChild(zombiesDiv.firstChild);
+  }
+
+  // Append the new image element to the 'zombies' div
+  zombiesDiv.appendChild(img);
+});
+
+    function startApp() {
+	
+      //ZombieOwnership contratc address
+      var cryptoZombiesAddress = "0xe50F2564Ca605dcC4D803C3eB8C648a6C1778796";
+
+      cryptoZombies = new web3.eth.Contract(cryptoZombiesABI, cryptoZombiesAddress);
+
+      cryptoZombies.events.Transfer({ filter: { _to: userAccount } })
+        .on("data", function (event) {
+          let data = event.returnValues;
+          getZombiesByOwner(userAccount).then(displayZombies);
+        }).on("error", console.error);
+    }
+
+    function displayZombies(ids) {
+      $("#zombies").empty();
+      for (id of ids) {
+
+        getZombieDetails(id)
+          .then(function (zombie) {
+            var img = document.createElement('img');
+            img.setAttribute('height','250')
+            img.setAttribute('width','250')
+            if(zombie.level==1){
+                img.setAttribute('src','123.jpg');
+            } else if(zombie.level==2){
+                img.setAttribute('src','456.jpg');
+            } else{
+                img.setAttribute('src','789.jpg');
+            }
+           
+           
+            $("#zombies").append(`<div class="zombie">
+              <ul>
+                <li>Name: ${zombie.name}</li>
+                <li>DNA: ${zombie.dna}</li>
+                <li>Level: ${zombie.level}</li>
+                <li>Wins: ${zombie.winCount}</li>
+                <li>Losses: ${zombie.lossCount}</li>
+                <li>Ready Time: ${zombie.readyTime}</li>
+              </ul>
+            </div>`).append(img);
+          });
+      }
+
+    }
+
+    function createRandomZombie(name) {
+
+      $("#txStatus").text("Creating new zombie on the blockchain. This may take a while...");
+
+      return cryptoZombies.methods.createRandomZombie(name)
+        .send({ from: userAccount })
+        .on("receipt", function (receipt) {
+          $("#txStatus").text("Successfully created " + name + "!");
+
+          getZombiesByOwner(userAccount).then(displayZombies);
+        })
+        .on("error", function (error) {
+
+          $("#txStatus").text(error);
+        });
+    }
+
+    let feedCounter = {};
+    let kittyCounter = 0;
+    
+    function feedOnKitty(zombieId) {
+      $("#txStatus").text("Eating a kitty. This may take a while...");
+    
+      // Initialize the counter for this zombie if it doesn't exist
+      if (!feedCounter[zombieId]) {
+        feedCounter[zombieId] = 0;
+      }
+    
+      // Increment the kittyCounter each time the function is called
+      kittyCounter++;
+    
+      return cryptoZombies.methods.feedOnKitty(zombieId, kittyCounter)
+        .send({ from: userAccount })
+        .on("receipt", function (receipt) {
+          $("#txStatus").text("Ate a kitty and spawned a new Zombie!");
+          getZombiesByOwner(userAccount).then(displayZombies);
+    
+          // Increment the counter for this zombie
+          feedCounter[zombieId]++;
+
+          // Update the page with the number of times this zombie has fed
+      $("#feedCount").text("Zombie " + zombieId + " has fed " + feedCounter[zombieId] + " times.");
+    
+          // If the counter reaches 5, level up the zombie
+          if (feedCounter[zombieId] >= 5) {
+            levelUp(zombieId);
+            feedCounter[zombieId] = 0;  // Reset the counter
+          }
+        })
+        .on("error", function (error) {
+          $("#txStatus").text(error);
+        });
+    }
+
+
+
+    function levelUp(zombieId) {
+      $("#txStatus").text("Leveling up your zombie...");
+      return cryptoZombies.methods.levelUp(zombieId)
+        .send({ from: userAccount, value: web3.utils.toWei("0.001", "ether") })
+        .on("receipt", function (receipt) {
+          $("#txStatus").text("Power overwhelming! Zombie successfully leveled up");
+        })
+        .on("error", function (error) {
+          $("#txStatus").text(error);
+        });
+    }
+
+    function getZombieDetails(id) {
+      return cryptoZombies.methods.zombies(id).call()
+    }
+
+    function zombieToOwner(id) {
+      return cryptoZombies.methods.zombieToOwner(id).call()
+    }
+
+    function getZombiesByOwner(owner) {
+      return cryptoZombies.methods.getZombiesByOwner(owner).call()
+    }
+
+    window.addEventListener('load', async () => {
+    // Modern dapp browsers...
+    if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+            // Request account access if needed
+            const accounts = await ethereum.enable();
+            // Acccounts now exposed
+            userAccount = accounts[0];
+            startApp()
+        } catch (error) {
+            // User denied account access...
+        }
+    }
+    // Legacy dapp browsers...
+    else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider);
+        // Acccounts always exposed
+        userAccount = web3.eth.accounts[0];
+        startApp()
+    }
+    // Non-dapp browsers...
+    else {
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
+   });
+
+
+   ethereum.on('accountsChanged', (accounts) => {
+       window.location.reload();
+   });
+
+   ethereum.on('chainChanged', (chainId) => {
+       window.location.reload(); 
+   });  
+
+ 
+    createzombieButton.addEventListener('click', () => {
+      createRandomZombie(userAccount);
+
+    });
+
+    showZombieButton.addEventListener('click', () => {
+      getZombiesByOwner(userAccount)
+            .then(displayZombies);
+
+    });
+
+    levelupButton.addEventListener('click', () => {
+      getZombiesByOwner(userAccount)
+            .then(levelUp);
+
+    });
+     
+    feedOnKittyButton.addEventListener("click", function() {
+      getZombiesByOwner(userAccount).then(function(zombieIds) {
+        // Use the first zombie owned by the user
+        let zombieId = zombieIds[0];
+    
+        feedOnKitty(zombieId);
+      });
+    });
+    
+    attackZombie.addEventListener("click",  () => {
+
+      getZombiesByOwner(userAccount)
+      .then(levelUp);
+    });
+    
+
+  </script>
+  </div>
+</body>
+
+</html>
